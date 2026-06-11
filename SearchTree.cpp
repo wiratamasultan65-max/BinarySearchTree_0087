@@ -27,9 +27,23 @@ public:
     // /Constructor for BinaryTree class
      BinaryTree() 
     {
-        root = nullptr; // initialize root to nullptr
+        root = NULL ; // initialize root to nullptr
     }
 
     //insert a node in the binary search tree
     void insert(string element)
+    {
+        Node *newnode = new Node(element, NULL, NULL); // create a new node with the given element
+
+        newnode->info = element; // set the info of the new node to the given element
+        newnode->leftchild = NULL; // set the left child of the new node to null
+        newnode->rightchild = NULL; // set the right child of the new node to null
+
+        Node *parent = NULL; // initialize parent pointer to null
+        Node *currentNode = NULL; // initialize currentNode pointer to null
+
+        search(element, parent, currentNode); // search for the correct position to insert the new node
+    }
+
+
 };
