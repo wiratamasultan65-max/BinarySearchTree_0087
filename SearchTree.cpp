@@ -2,15 +2,15 @@
 #include <string>
 using namespace std;
 
-class Node
+class Node 
 {
 public:
     string info;
     Node *leftchild;
     Node *rightchild;
 
-    // Constructor for the node class
-    Node(string i, Node *l, Node *r)
+    // Constructor untuk Node class
+    Node (string i, Node *l, Node *r) 
     {
         info = i;
         leftchild = l;
@@ -18,113 +18,105 @@ public:
     }
 };
 
-class BinaryTree
+class BinaryTree 
 {
 public:
-    Node *ROOT;
+    Node *root;
 
-    BinaryTree()
+    // Constructor untuk BinaryTree class
+    BinaryTree() 
     {
-        ROOT = NULL; // Initializing ROOT to null
+        root = NULL; 
     }
 
-    // This function searches the current node of the specified node
-    // as well as the current node of its parent
-    void search(string element, Node* &parent, Node *&currentNode)
+    // Fungsi mencari posisi node
+    void search(string element, Node *&parent, Node *&currentNode)
     {
-        currentNode = ROOT;
-        parent = NULL;
+        currentNode = root; 
+        parent = NULL; 
 
-        while ((currentNode != NULL) && (currentNode->info != element))
+        while ((currentNode != NULL) && (currentNode->info != element)) 
         {
-            parent = currentNode;
+            parent = currentNode; 
 
-            if (element < currentNode->info)
+            if (element < currentNode->info) 
+            {
                 currentNode = currentNode->leftchild;
-            else
+            }
+            else 
+            {
                 currentNode = currentNode->rightchild;
+            }
         }
     }
 
-    // Insert a node in the binary search tree
+    // Fungsi menyisipkan node baru ke dalam pohon
     void insert(string element)
     {
-        Node *newNode = new Node(element, NULL, NULL);
+        Node *newnode = new Node(element, NULL, NULL); 
 
-        newNode->info = element;
-        newNode->leftchild = NULL;
-        newNode->rightchild = NULL;
+        Node *parent = NULL; 
+        Node *currentNode = NULL; 
 
-        Node *parent = NULL;
-        Node *currentNode = NULL;
-
-        search(element, parent, currentNode);
-
-        if (parent == NULL)
+        search(element, parent, currentNode); 
+        
+        if (parent == NULL) 
         {
-            ROOT = newNode;
+            root = newnode;
             return;
         }
-
-        if (element < parent->info)
+        else if (element < parent->info) 
         {
-            parent->leftchild = newNode;
+            parent->leftchild = newnode;
         }
-        else if (element > parent->info)
+        else 
         {
-            parent->rightchild = newNode;
+            parent->rightchild = newnode;
         }
     }
 
-    void inorder(Node *ptr)
+    void inorder(Node* ptr)
     {
-        if (ROOT == NULL)
+        if (ptr != NULL) 
+        {
+            inorder(ptr->leftchild); 
+            cout << ptr->info << " "; 
+            inorder(ptr->rightchild); 
+        }
+    }
+
+    void preorder(Node* ptr) 
+    {
+        if (root == NULL) 
         {
             cout << "Tree is empty" << endl;
             return;
         }
 
-        if (ptr != NULL)
+        if (ptr != NULL) 
         {
-            inorder(ptr->leftchild);
-            cout << ptr->info << " ";
-            inorder(ptr->rightchild);
+            cout << ptr->info << " "; 
+            preorder(ptr->leftchild); 
+            preorder(ptr->rightchild); 
         }
     }
 
-    void preorder(Node *ptr)
+    void postorder(Node* ptr) 
     {
-        if (ROOT == NULL)
+        if (root == NULL) 
         {
             cout << "Tree is empty" << endl;
             return;
         }
 
-        if (ptr != NULL) // Perbaikan: Sebelumnya menggunakan kurung kurawal {ptr != NULL} yang salah
+        if (ptr != NULL) 
         {
-            cout << ptr->info << " ";
-            preorder(ptr->leftchild);
-            preorder(ptr->rightchild);
+            postorder(ptr->leftchild); 
+            postorder(ptr->rightchild); 
+            cout << ptr->info << " "; 
         }
-    }
-
-    void postorder(Node *ptr)
-    {
-        // Performs the postorder traversal of the tree
-        if (ROOT == NULL)
-        {
-            cout << "Tree is empty" << endl;
-            return;
-        }
-
-        if (ptr != NULL)
-        {
-            postorder(ptr->leftchild);
-            postorder(ptr->rightchild);
-            cout << ptr->info << " ";
-        }
-    }
-};
+    }    
+}; 
 
 int main()
 {
@@ -132,16 +124,15 @@ int main()
 
     while(true)
     {
-        cout << "1. Implement insert operation" << endl;
+        cout << "\n1. Implement insert operation" << endl;
         cout << "2. Perform inorder traversal" << endl;
         cout << "3. Perform preorder traversal" << endl;
-        cout << "4.Perform postorder traversal" << endl;
+        cout << "4. Perform postorder traversal" << endl;
         cout << "5. Exit" << endl;
         cout << "\nEnter your choice (1-5): ";
 
         char ch;
         cin >> ch;
-        
         cout << endl;
 
         switch (ch)
@@ -157,19 +148,23 @@ int main()
 
             case '2':
             {
-                obj.inorder(obj.ROOT);
+                obj.inorder(obj.root);
+                cout << endl;
                 break;
             }
 
             case '3':
             {
-                obj.preorder(obj.ROOT);
+                obj.preorder(obj.root);
+                cout << endl;
                 break;
             }
 
             case '4':
             {
-                obj.postorder(obj.ROOT);
+                obj.postorder(obj.root);
+                cout << endl;
+                break; 
             }
 
             case '5':
@@ -180,9 +175,8 @@ int main()
                 cout << "Invalid option" << endl;
                 break;
             }
-            }
+        }
     }
 
     return 0;
-
 }
