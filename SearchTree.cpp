@@ -43,7 +43,15 @@ public:
         Node *currentNode = NULL; // initialize currentNode pointer to null
 
         search(element, parent, currentNode); // search for the correct position to insert the new node
-    }
+        if (parent == NULL) // if the tree is empty, set the new node as the root
+        {
+            root = newnode;
+            return;
+        }
+        else if (element < parent->info) // if the element is less than the parent's info, insert it as the left child
+        {
+            parent->leftchild = newnode;
+        }
 
 
 };
