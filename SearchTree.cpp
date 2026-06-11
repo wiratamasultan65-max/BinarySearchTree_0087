@@ -29,4 +29,7 @@ public:
     {
         root = nullptr; // initialize root to nullptr
     }
+
+    //insert a node in the binary search tree
+    void insert(string element)
 };
