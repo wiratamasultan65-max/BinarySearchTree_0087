@@ -74,9 +74,9 @@ void search(string element, Node *&parent, Node *&currentNode)
             currentNode = currentNode->rightchild;
         }
     }
+}
 
-
- void inorder (Node* ptr)
+void inorder (Node* ptr)
     {
         if (ptr != NULL) // if the current node is not null, continue the inorder traversal
         {
@@ -86,3 +86,35 @@ void search(string element, Node *&parent, Node *&currentNode)
         }
     }
 
+void preorder(Node* ptr) 
+        {
+            if (ROOT == NULL) 
+            {
+                cout << "Tree is empty" << endl;
+                return;
+            }
+
+            if (ptr != NULL) 
+            {
+                cout << ptr->info << " "; 
+                preorder(ptr->leftchild); 
+                preorder(ptr->rightchild); 
+            }
+        }
+
+void postorder(Node* ptr) 
+        {
+            //performs postorder traversal of the tree
+            if (ROOT == NULL) 
+            {
+                cout << "Tree is empty" << endl;
+                return;
+            }
+
+            if (ptr != NULL) 
+            {
+                postorder(ptr->leftchild); 
+                postorder(ptr->rightchild); 
+                cout << ptr->info << " "; 
+            }
+        }    
