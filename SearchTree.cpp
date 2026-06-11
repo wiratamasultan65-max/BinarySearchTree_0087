@@ -24,8 +24,8 @@ class BinaryTree
 public:
     Node *root;
 
-    // Constructor for BinaryTree class
-    BinaryTree() 
+    // /Constructor for BinaryTree class
+     BinaryTree() 
     {
         root = nullptr;
     }
