@@ -88,7 +88,7 @@ void inorder (Node* ptr)
 
 void preorder(Node* ptr) 
         {
-            if (ROOT == NULL) 
+            if (root == NULL) 
             {
                 cout << "Tree is empty" << endl;
                 return;
@@ -105,7 +105,7 @@ void preorder(Node* ptr)
 void postorder(Node* ptr) 
         {
             //performs postorder traversal of the tree
-            if (ROOT == NULL) 
+            if (root   == NULL) 
             {
                 cout << "Tree is empty" << endl;
                 return;
@@ -151,19 +151,19 @@ int main()
 
            case '2':
             {
-                obj.inorder(obj.ROOT);
+                obj.inorder(obj.root);
                 break;
             }
 
             case '3':
             {
-                obj.preorder(obj.ROOT);
+                obj.preorder(obj.root);
                 break;
             }
 
             case '4':
             {
-                obj.postorder(obj.ROOT);
+                obj.postorder(obj.root);
             }
 
             case '5':
