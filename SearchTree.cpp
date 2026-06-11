@@ -60,12 +60,9 @@ void search(string element, Node *&parent, Node *&currentNode)
     currentNode = root; // start the search from the root
     parent = NULL; // initialize parent to null
 
-    while (currentNode != NULL) // continue searching until we reach a null node
+    while ((currentNode != NULL) && (currentNode->info != element)) // continue searching until we reach a null node or find the element
     {
-        if (element == currentNode->info) // if the element is found, return
-        {
-            return;
-        }
+    
         parent = currentNode; // update parent to the current node
 
         if (element < currentNode->info) // if the element is less than the current node's info, go to the left child
