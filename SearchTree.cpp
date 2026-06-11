@@ -27,6 +27,6 @@ public:
     // /Constructor for BinaryTree class
      BinaryTree() 
     {
-        root = nullptr;
+        root = nullptr; // initialize root to nullptr
     }
 };
