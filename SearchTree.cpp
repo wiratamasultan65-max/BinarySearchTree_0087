@@ -155,4 +155,28 @@ int main()
                 break;
             }
 
-            
+            case '3':
+            {
+                obj.preorder(obj.ROOT);
+                break;
+            }
+
+            case '4':
+            {
+                obj.postorder(obj.ROOT);
+            }
+
+            case '5':
+                return 0;
+
+            default:
+            {
+                cout << "Invalid option" << endl;
+                break;
+            }
+            }
+    }
+
+    return 0;
+
+} 
