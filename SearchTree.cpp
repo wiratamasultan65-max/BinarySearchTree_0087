@@ -74,4 +74,15 @@ void search(string element, Node *&parent, Node *&currentNode)
             currentNode = currentNode->rightchild;
         }
     }
-}
+
+
+ void inorder (Node* ptr)
+    {
+        if (ptr != NULL) // if the current node is not null, continue the inorder traversal
+        {
+            inorder(ptr->leftchild); // traverse the left subtree
+            cout << ptr->info << " "; // visit the current node
+            inorder(ptr->rightchild); // traverse the right subtree
+        }
+    }
+
